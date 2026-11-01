@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VEXY CheckCMD · ตรวจหาโปรแกรมช่วยเล่น FiveM</title>
+<meta name="description" content="VEXY CheckCMD โดย VEXY STORE — ตรวจหาโปรแกรมช่วยเล่น FiveM ในเครื่อง อ่านอย่างเดียว ไม่ส่งข้อมูลออก ดาวน์โหลดฟรี">
+<meta property="og:title" content="VEXY CheckCMD · FiveM Cheat Scanner">
+<meta property="og:description" content="ตรวจหาโปรแกรมช่วยเล่น FiveM ในเครื่อง · ดาวน์โหลดเวอร์ชันล่าสุด">
+<meta property="og:image" content="https://churiwantuk-hash.github.io/vexy-checkcmd/assets/result.png">
+<meta name="theme-color" content="#060a15">
+<link rel="icon" type="image/png" href="assets/logo-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#060a15;--bg2:#08101f;--panel:#0c1427;--panel2:#0f1a31;--line:#1a2b4a;--line2:#24406a;
+  --text:#e8f1ff;--muted:#8ea3c4;--dim:#5f7699;--cyan:#38cbff;--blue:#1b6ff0;--red:#ff4d6d;--amber:#ffbf4d;--green:#2de3a0;
+  --radius:18px;--max:1160px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 "Prompt","Leelawadee UI",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+.glow{position:fixed;inset:0;pointer-events:none;z-index:-1;background:
+  radial-gradient(900px 600px at 78% -8%,rgba(40,140,255,.22),transparent 60%),
+  radial-gradient(700px 500px at 5% 18%,rgba(56,203,255,.12),transparent 60%),
+  radial-gradient(800px 600px at 50% 110%,rgba(27,111,240,.14),transparent 60%)}
+
+/* nav */
+header{position:sticky;top:0;z-index:20;backdrop-filter:blur(14px);background:rgba(6,10,21,.72);border-bottom:1px solid rgba(26,43,74,.7)}
+.nav{display:flex;align-items:center;height:68px;gap:24px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand img{width:40px;height:40px}
+.brand b{display:block;font-size:16px;letter-spacing:1.6px;line-height:1.1}
+.brand small{display:block;font-size:10px;letter-spacing:2.4px;color:var(--cyan);font-weight:600}
+.links{margin-left:auto;display:flex;gap:26px;font-size:14px;color:var(--muted)}
+.links a:hover{color:var(--text)}
+.nav .btn{padding:9px 18px;font-size:14px}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 24px;border-radius:14px;font-weight:600;font-size:16px;border:1px solid transparent;cursor:pointer;transition:transform .15s,box-shadow .2s,background .2s;font-family:inherit;color:#fff}
+.btn svg{width:20px;height:20px;flex:none}
+.btn.primary{background:linear-gradient(90deg,#1aa8f5,#1b6ff0);box-shadow:0 10px 30px rgba(27,130,240,.35)}
+.btn.primary:hover{transform:translateY(-2px);box-shadow:0 14px 38px rgba(27,130,240,.5)}
+.btn.ghost{background:rgba(14,26,48,.7);border-color:var(--line2);color:#d4e4fb}
+.btn.ghost:hover{border-color:#3d6db0;background:#122441}
+.btn.big{padding:18px 30px;font-size:19px;border-radius:16px}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:72px 0 40px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:2.6px;color:var(--cyan);padding:6px 14px;border:1px solid rgba(56,203,255,.3);border-radius:30px;background:rgba(56,203,255,.06)}
+.eyebrow i{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green)}
+h1{font-size:clamp(34px,5vw,56px);line-height:1.18;margin:20px 0 16px;font-weight:700;letter-spacing:-.5px}
+.nw{white-space:nowrap}
+h1 .grad{background:linear-gradient(90deg,#4fd8ff,#2f8bff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:18px;color:var(--muted);max-width:560px;margin:0 0 30px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.meta{margin-top:16px;font-size:13px;color:var(--dim);display:flex;flex-wrap:wrap;gap:6px 16px}
+.meta span{display:inline-flex;align-items:center;gap:6px}
+.meta b{color:var(--muted);font-weight:500}
+.hero-art{position:relative;display:flex;justify-content:center}
+.hero-art .halo{position:absolute;inset:6% 10%;border-radius:50%;background:radial-gradient(circle,rgba(56,203,255,.35),transparent 65%);filter:blur(20px)}
+.hero-art img{position:relative;width:min(420px,90%);animation:float 6s ease-in-out infinite;filter:drop-shadow(0 30px 60px rgba(20,120,255,.35))}
+@keyframes float{50%{transform:translateY(-14px)}}
+
+/* trust strip */
+.trust{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:10px 0 70px}
+.trust div{padding:16px 18px;border:1px solid var(--line);border-radius:14px;background:rgba(12,20,39,.6);font-size:14px;color:var(--muted)}
+.trust b{display:block;color:var(--text);font-size:15px;font-weight:600}
+
+/* sections */
+section{padding:30px 0 70px}
+.head{text-align:center;max-width:680px;margin:0 auto 38px}
+.head h2{font-size:clamp(26px,3.4vw,38px);margin:12px 0 10px;line-height:1.25}
+.head p{color:var(--muted);margin:0}
+
+/* screenshot */
+.shot{position:relative;border-radius:20px;padding:10px;background:linear-gradient(180deg,#14284a,#0a1324);border:1px solid var(--line2);box-shadow:0 40px 100px rgba(0,0,0,.55),0 0 0 1px rgba(56,203,255,.06)}
+.shot .bar{display:flex;gap:7px;padding:4px 8px 10px}
+.shot .bar i{width:11px;height:11px;border-radius:50%;background:#24385a}
+.shot img{border-radius:12px;width:100%}
+.shot .tag{position:absolute;top:14px;right:18px;font-size:12px;color:var(--muted);background:rgba(6,10,21,.75);padding:4px 10px;border-radius:20px;border:1px solid var(--line)}
+.tabs{display:flex;justify-content:center;gap:8px;margin:0 0 18px}
+.tabs button{font:inherit;font-size:14px;color:var(--muted);background:transparent;border:1px solid var(--line);padding:8px 16px;border-radius:30px;cursor:pointer}
+.tabs button.on{color:#fff;border-color:#2a6fb5;background:#123a66}
+
+/* features */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{padding:24px;border-radius:var(--radius);border:1px solid var(--line);background:linear-gradient(180deg,rgba(15,26,49,.9),rgba(10,17,33,.9));transition:border-color .2s,transform .2s}
+.card:hover{border-color:#2a4f86;transform:translateY(-3px)}
+.ic{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;background:rgba(56,203,255,.1);border:1px solid rgba(56,203,255,.25);color:var(--cyan);margin-bottom:16px}
+.ic svg{width:22px;height:22px}
+.card h3{margin:0 0 6px;font-size:18px}
+.card p{margin:0;color:var(--muted);font-size:14.5px}
+
+/* install */
+.install{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.panel{padding:28px;border-radius:var(--radius);border:1px solid var(--line);background:var(--panel)}
+.panel h3{margin:0 0 4px;font-size:20px;display:flex;align-items:center;gap:10px}
+.panel .sub{color:var(--muted);font-size:14px;margin:0 0 20px}
+.badge{font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:rgba(45,227,160,.12);color:var(--green);border:1px solid rgba(45,227,160,.3)}
+.steps{list-style:none;margin:0 0 22px;padding:0;counter-reset:s}
+.steps li{position:relative;padding:0 0 14px 44px;color:#cfdcf2;font-size:15px}
+.steps li:before{counter-increment:s;content:counter(s);position:absolute;left:0;top:0;width:28px;height:28px;border-radius:9px;display:grid;place-items:center;font-size:13px;font-weight:700;color:var(--cyan);background:rgba(56,203,255,.1);border:1px solid rgba(56,203,255,.3)}
+.code{position:relative;margin:4px 0 16px;padding:16px 56px 16px 16px;border-radius:12px;background:#050b16;border:1px solid var(--line);font:13px/1.6 "JetBrains Mono",Consolas,monospace;color:#9fd3ff;word-break:break-all}
+.copy{position:absolute;top:10px;right:10px;width:36px;height:36px;border-radius:10px;border:1px solid var(--line2);background:#0e1a30;color:var(--cyan);cursor:pointer;display:grid;place-items:center}
+.copy:hover{background:#17305a}
+.copy svg{width:17px;height:17px}
+.note{display:flex;gap:12px;padding:14px 16px;border-radius:12px;background:rgba(255,191,77,.07);border:1px solid rgba(255,191,77,.28);color:#f0d49a;font-size:14px}
+.note svg{width:20px;height:20px;flex:none;color:var(--amber);margin-top:2px}
+
+/* changelog */
+.log{display:grid;gap:12px;max-width:820px;margin:0 auto}
+.rel{padding:18px 22px;border-radius:14px;border:1px solid var(--line);background:rgba(12,20,39,.7)}
+.rel .t{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.rel b{font-size:16px}
+.rel .d{font-size:13px;color:var(--dim)}
+.rel .new{font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;background:rgba(56,203,255,.12);color:var(--cyan)}
+.rel ul{margin:10px 0 0;padding-left:20px;color:var(--muted);font-size:14px}
+
+/* final cta */
+.final{text-align:center;padding:56px 24px;border-radius:26px;border:1px solid var(--line2);background:radial-gradient(600px 300px at 50% 0%,rgba(56,203,255,.16),transparent 70%),var(--panel)}
+.final h2{font-size:clamp(26px,3.4vw,36px);margin:0 0 10px}
+.final p{color:var(--muted);margin:0 0 26px}
+
+footer{padding:40px 0 50px;color:var(--dim);font-size:13px;text-align:center}
+footer a{color:var(--muted)}
+.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);opacity:0;transition:.25s;padding:11px 18px;border-radius:12px;background:#10284a;border:1px solid #2a6fb5;font-size:14px;z-index:50}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+@media (max-width:900px){
+  .hero{grid-template-columns:1fr;padding-top:44px;text-align:center}
+  .lead{margin-left:auto;margin-right:auto}
+  .cta,.meta{justify-content:center}
+  .hero-art{order:-1}.hero-art img{width:min(260px,70%)}
+  .trust{grid-template-columns:repeat(2,1fr)}
+  .grid{grid-template-columns:1fr 1fr}
+  .install{grid-template-columns:1fr}
+  .links{display:none}
+}
+@media (max-width:560px){
+  .wrap{padding:0 16px}
+  .grid,.trust{grid-template-columns:1fr}
+  .btn.big{width:100%;justify-content:center}
+  .nav .btn span{display:none}
+}
+</style>
+</head>
+<body>
+<div class="glow"></div>
+
+<header><div class="wrap nav">
+  <a class="brand" href="#"><img src="assets/logo-mark.png" alt=""><span><b>VEXY STORE</b><small>CHECKCMD SCANNER</small></span></a>
+  <nav class="links"><a href="#features">ฟีเจอร์</a><a href="#install">วิธีติดตั้ง</a><a href="#changelog">อัปเดต</a><a href="https://aurora-keys.churiwan-tuk.workers.dev/shop" target="_blank" rel="noopener">ซื้อคีย์</a></nav>
+  <a class="btn primary dl" href="https://github.com/churiwantuk-hash/vexy-checkcmd/releases/latest/download/VEXY-CheckCMD-Setup.exe"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 19h16"/></svg><span>ดาวน์โหลด</span></a>
+</div></header>
+
+<main class="wrap">
+  <div class="hero">
+    <div>
+      <span class="eyebrow"><i></i>FIVEM CHEAT SCANNER</span>
+      <h1>ตรวจหา<span class="nw">โปรแกรมช่วยเล่น</span> <span class="grad">FiveM</span><br><span class="nw">ในเครื่อง</span><span class="nw">ได้ในคลิกเดียว</span></h1>
+      <p class="lead">VEXY CheckCMD สแกนไฟล์ โปรเซส ประวัติ Windows และเบราว์เซอร์ เทียบกับฐานข้อมูลโปรแกรมโกงที่รู้จัก — จับได้แม้ถูกเปลี่ยนชื่อหรือลบทิ้งไปแล้ว</p>
+      <div class="cta">
+        <a class="btn primary big dl" href="https://github.com/churiwantuk-hash/vexy-checkcmd/releases/latest/download/VEXY-CheckCMD-Setup.exe">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 19h16"/></svg>
+          ดาวน์โหลดสำหรับ Windows
+        </a>
+        <a class="btn ghost big" href="#install">ติดตั้งด้วยคำสั่ง CMD</a>
+      </div>
+      <div class="meta">
+        <span>เวอร์ชัน <b id="ver">ล่าสุด</b></span>
+        <span>ขนาด <b id="size">~64 MB</b></span>
+        <span>อัปเดต <b id="date">—</b></span>
+        <span>Windows 10 / 11 · 64-bit</span>
+      </div>
+    </div>
+    <div class="hero-art"><div class="halo"></div><img src="assets/logo.png" alt="VEXY STORE"></div>
+  </div>
+
+  <div class="trust">
+    <div><b>อ่านอย่างเดียว</b>ไม่แก้ ไม่ลบไฟล์ของคุณ</div>
+    <div><b>ไม่ส่งข้อมูลออก</b>ผลสแกนอยู่ในเครื่องเท่านั้น</div>
+    <div><b>ไม่ติดตั้ง driver</b>ไม่ยุ่งกับระบบเกม</div>
+    <div><b>สแกนไม่กี่วินาที</b>ตรวจกว่า 30,000 รายการ</div>
+  </div>
+
+  <section id="preview">
+    <div class="head">
+      <span class="eyebrow">ภาพตัวอย่าง</span>
+      <h2>รู้ผลทันที ว่าเครื่องนี้มีโปรแกรมช่วยเล่นหรือไม่</h2>
+      <p>แยกระดับชัดเจน: พบโปรแกรมช่วยเล่น · น่าสงสัย · ข้อมูลประกอบ พร้อมตำแหน่งไฟล์และเวลา</p>
+    </div>
+    <div class="tabs"><button class="on" data-img="assets/result.png">ผลสแกน</button><button data-img="assets/home.png">หน้าหลัก</button></div>
+    <div class="shot"><div class="bar"><i></i><i></i><i></i></div><span class="tag">ภาพตัวอย่างจากไฟล์ทดสอบ</span><img id="shotimg" src="assets/result.png" alt="ภาพหน้าจอ VEXY CheckCMD" loading="lazy"></div>
+  </section>
+
+  <section id="features">
+    <div class="head">
+      <span class="eyebrow">สิ่งที่ตรวจ</span>
+      <h2>ตรวจลึกกว่าแค่ชื่อไฟล์</h2>
+      <p>ใช้ร่องรอยที่ Windows เก็บไว้เอง จึงหลบยากแม้ลบหรือเปลี่ยนชื่อโปรแกรมแล้ว</p>
+    </div>
+    <div class="grid">
+      <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></div><h3>ชื่อและเนื้อหาไฟล์</h3><p>อ่าน strings ใน .exe .dll .lua .ahk และไฟล์ทุกชนิดที่เลือก รวมถึงไฟล์ใน .zip</p></div>
+      <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/></svg></div><h3>ไฟล์ที่ลบ / เปลี่ยนชื่อ</h3><p>ถังขยะ ประวัติการรัน (BAM, Prefetch, UserAssist) และแหล่งที่มาของไฟล์ที่ดาวน์โหลด</p></div>
+      <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3>ประวัติ Windows ทั้งหมด</h3><p>PowerShell, โปรแกรมที่ติดตั้ง, การเปิด/ปิดเครื่อง, event log ย้อนถึงวันติดตั้ง Windows</p></div>
+      <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></div><h3>เบราว์เซอร์ & ดาวน์โหลด</h3><p>Chrome, Edge, Brave, Opera, Firefox — เว็บร้านโปรแกรมโกงและไฟล์ที่ดาวน์โหลดมา</p></div>
+      <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3M7 9l3 3-3 3M13 15h4"/></svg></div><h3>โปรเซส & driver</h3><p>โปรแกรมที่เปิดอยู่ตอนนี้ ร่องรอย driver ของตัวโหลดโกง (kdmapper) และ crash dump ของ FiveM</p></div>
+      <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>Windows Defender</h3><p>ประวัติที่ Defender เคยจับ HackTool / GameHack แม้ไฟล์ถูกกักกันไปแล้ว</p></div>
+    </div>
+  </section>
+
+  <section id="install">
+    <div class="head">
+      <span class="eyebrow">วิธีติดตั้ง</span>
+      <h2>ติดตั้งได้ 2 แบบ</h2>
+      <p>ใช้งานต้องมีคีย์จากร้าน VEXY STORE · คีย์เดียวใช้ได้หลายเครื่อง</p>
+    </div>
+    <div class="install">
+      <div class="panel">
+        <h3>ดาวน์โหลดไฟล์</h3>
+        <p class="sub">ง่ายที่สุด กดปุ่มแล้วติดตั้ง</p>
+        <ol class="steps">
+          <li>กดปุ่มดาวน์โหลดด้านล่าง</li>
+          <li>ดับเบิลคลิก <b>VEXY-CheckCMD-Setup.exe</b> แล้วกด <b>ติดตั้ง</b></li>
+          <li>เปิดจากทางลัด <b>VEXY CheckCMD</b> บน Desktop แล้วใส่คีย์</li>
+        </ol>
+        <a class="btn primary dl" href="https://github.com/churiwantuk-hash/vexy-checkcmd/releases/latest/download/VEXY-CheckCMD-Setup.exe"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 19h16"/></svg>ดาวน์โหลด VEXY CheckCMD</a>
+        <div class="note" style="margin-top:18px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4m0 4h.01M10.3 3.9L2 18a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg><div>ถ้า Windows ขึ้นหน้าจอสีฟ้า <b>"Windows protected your PC"</b> ให้กด <b>More info</b> → <b>Run anyway</b> (โปรแกรมยังไม่มีใบรับรองผู้พัฒนา)</div></div>
+      </div>
+      <div class="panel">
+        <h3>คำสั่ง CMD <span class="badge">แนะนำ</span></h3>
+        <p class="sub">วางคำสั่งเดียว ติดตั้งให้อัตโนมัติ และไม่มีหน้าจอเตือนสีฟ้า</p>
+        <ol class="steps">
+          <li>กดปุ่ม <b>Start</b> พิมพ์ <b>cmd</b> แล้วเปิด <b>Command Prompt</b></li>
+          <li>คัดลอกคำสั่งนี้ไปวาง แล้วกด <b>Enter</b></li>
+        </ol>
+        <div class="code" id="cmd">powershell -NoProfile -ExecutionPolicy Bypass -Command "[Net.ServicePointManager]::SecurityProtocol=3072; irm https://github.com/churiwantuk-hash/vexy-checkcmd/releases/latest/download/install.ps1 | iex"<button class="copy" data-copy="cmd" title="คัดลอก"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></button></div>
+        <p class="sub" style="margin:0">อัปเดตเป็นเวอร์ชันใหม่: วางคำสั่งเดิมอีกครั้งได้เลย</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="changelog">
+    <div class="head">
+      <span class="eyebrow">อัปเดตล่าสุด</span>
+      <h2>มีอะไรใหม่</h2>
+    </div>
+    <div class="log" id="log"><div class="rel"><div class="t"><b>กำลังโหลด…</b></div></div></div>
+  </section>
+
+  <div class="final">
+    <h2>พร้อมตรวจเครื่องแล้วหรือยัง?</h2>
+    <p>ดาวน์โหลดเวอร์ชันล่าสุด แล้วใส่คีย์จากร้าน VEXY STORE</p>
+    <div class="cta" style="justify-content:center">
+      <a class="btn primary big dl" href="https://github.com/churiwantuk-hash/vexy-checkcmd/releases/latest/download/VEXY-CheckCMD-Setup.exe"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 19h16"/></svg>ดาวน์โหลดเลย</a>
+      <a class="btn ghost big" href="https://aurora-keys.churiwan-tuk.workers.dev/shop" target="_blank" rel="noopener">ซื้อ / เช่าคีย์</a>
+    </div>
+  </div>
+</main>
+
+<footer class="wrap">© VEXY STORE · VEXY CheckCMD · <a href="https://github.com/churiwantuk-hash/vexy-checkcmd/releases" target="_blank" rel="noopener">ทุกเวอร์ชัน</a><br>ผลการสแกนอ้างอิงลายเซ็นโปรแกรมที่รู้จัก รายการ "น่าสงสัย" ควรตรวจสอบด้วยตนเอง</footer>
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  var REPO='churiwantuk-hash/vexy-checkcmd';
+  function toast(t){var el=document.getElementById('toast');el.textContent=t;el.classList.add('show');clearTimeout(el._t);el._t=setTimeout(function(){el.classList.remove('show')},2200)}
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function thDate(iso){try{return new Date(iso).toLocaleDateString('th-TH',{day:'numeric',month:'short',year:'numeric'})}catch(e){return iso.slice(0,10)}}
+
+  document.querySelectorAll('[data-copy]').forEach(function(b){b.addEventListener('click',function(){
+    var t=document.getElementById(b.getAttribute('data-copy')).firstChild.textContent.trim();
+    (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(function(){toast('คัดลอกคำสั่งแล้ว')},function(){
+      var a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();document.execCommand('copy');a.remove();toast('คัดลอกคำสั่งแล้ว')})})});
+  document.querySelectorAll('.tabs button').forEach(function(b){b.addEventListener('click',function(){
+    document.querySelectorAll('.tabs button').forEach(function(x){x.classList.toggle('on',x===b)});document.getElementById('shotimg').src=b.getAttribute('data-img')})});
+  document.querySelectorAll('a.dl').forEach(function(a){a.addEventListener('click',function(){toast('กำลังดาวน์โหลด… ถ้าขึ้นหน้าจอสีฟ้า กด More info → Run anyway')})});
+
+  // version, size, date and changelog straight from the GitHub releases
+  fetch('https://api.github.com/repos/'+REPO+'/releases?per_page=4').then(function(r){return r.ok?r.json():Promise.reject()}).then(function(rels){
+    if(!rels.length)return;
+    var latest=rels[0],asset=(latest.assets||[]).filter(function(a){return /\.exe$/i.test(a.name)})[0];
+    document.getElementById('ver').textContent=latest.tag_name;
+    document.getElementById('date').textContent=thDate(latest.published_at);
+    if(asset)document.getElementById('size').textContent=(asset.size/1048576).toFixed(1)+' MB';
+    document.getElementById('log').innerHTML=rels.map(function(r,i){
+      var lines=(r.body||'').split(/\r?\n/).filter(function(l){return /^\s*-\s+/.test(l)}).slice(0,6).map(function(l){return '<li>'+esc(l.replace(/^\s*-\s+/,''))+'</li>'}).join('');
+      return '<div class="rel"><div class="t"><b>'+esc(r.name||r.tag_name)+'</b>'+(i===0?'<span class="new">ล่าสุด</span>':'')+'<span class="d">'+thDate(r.published_at)+'</span></div>'+(lines?'<ul>'+lines+'</ul>':'')+'</div>'}).join('');
+  }).catch(function(){
+    document.getElementById('log').innerHTML='<div class="rel"><div class="t"><b>ดูประวัติเวอร์ชันได้ที่</b><a class="d" href="https://github.com/'+REPO+'/releases" target="_blank" rel="noopener" style="color:#38cbff">GitHub Releases</a></div></div>';
+  });
+})();
+</script>
+</body>
+</html>
