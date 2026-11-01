@@ -129,6 +129,19 @@ section{padding:30px 0 70px}
 
 footer{padding:40px 0 50px;color:var(--dim);font-size:13px;text-align:center}
 footer a{color:var(--muted)}
+.dlm{position:fixed;inset:0;z-index:60;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(3,6,14,.78);backdrop-filter:blur(6px)}
+.dlm.show{display:flex}
+.dlm .box{width:min(560px,100%);max-height:calc(100vh - 32px);overflow:auto;padding:26px 26px 22px;border-radius:22px;border:1px solid var(--line2);background:var(--panel);box-shadow:0 40px 100px rgba(0,0,0,.6);scrollbar-width:thin;scrollbar-color:#24406a transparent}
+.dlm h3{margin:0 0 4px;font-size:21px;display:flex;align-items:center;gap:10px}
+.dlm h3 i{width:12px;height:12px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green)}
+.dlm .file{display:flex;align-items:center;gap:12px;margin:14px 0 18px;padding:12px 14px;border-radius:12px;background:#050b16;border:1px solid var(--line)}
+.dlm .file img{width:34px;height:34px}
+.dlm .file b{display:block;font:500 14px "JetBrains Mono",Consolas,monospace;color:#9fd3ff}
+.dlm .file span{font-size:12.5px;color:var(--muted)}
+.dlm .shot2{margin:4px 0 16px;border-radius:12px;border:1px solid var(--line2);overflow:hidden}
+.dlm .close{margin-top:6px;width:100%;justify-content:center}
+.dlm .again{font-size:13px;color:var(--muted);text-align:center;margin-top:10px}
+.dlm .again a{color:var(--cyan)}
 .toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);opacity:0;transition:.25s;padding:11px 18px;border-radius:12px;background:#10284a;border:1px solid #2a6fb5;font-size:14px;z-index:50}
 .toast.show{opacity:1;transform:translate(-50%,0)}
 
@@ -265,6 +278,19 @@ footer a{color:var(--muted)}
 </main>
 
 <footer class="wrap">© VEXY STORE · VEXY CheckCMD · <a href="https://github.com/churiwantuk-hash/vexy-checkcmd/releases" target="_blank" rel="noopener">ทุกเวอร์ชัน</a><br>ผลการสแกนอ้างอิงลายเซ็นโปรแกรมที่รู้จัก รายการ "น่าสงสัย" ควรตรวจสอบด้วยตนเอง</footer>
+<div class="dlm" id="dlm"><div class="box">
+  <h3><i></i>กำลังดาวน์โหลดตัวติดตั้ง</h3>
+  <div class="file"><img src="assets/logo-mark.png" alt=""><div><b>VEXY-CheckCMD-Setup.exe</b><span>บันทึกลงโฟลเดอร์ <b style="display:inline;font:inherit;color:#e8f1ff">Downloads</b> · <span id="dlsize">~64 MB</span></span></div></div>
+  <ol class="steps">
+    <li>รอดาวน์โหลดเสร็จ (ดูที่ไอคอนดาวน์โหลดมุมขวาบนของเบราว์เซอร์)</li>
+    <li>ถ้าเบราว์เซอร์เตือนว่าไม่ค่อยมีคนดาวน์โหลด ให้กด <b>เก็บไว้ / Keep</b></li>
+    <li>เปิดไฟล์ <b>VEXY-CheckCMD-Setup.exe</b> จะขึ้นหน้าต่างติดตั้งแบบนี้ แล้วกด <b>ติดตั้ง</b></li>
+  </ol>
+  <div class="shot2"><img src="assets/setup.png" alt="หน้าต่างติดตั้ง VEXY CheckCMD"></div>
+  <div class="note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4m0 4h.01M10.3 3.9L2 18a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg><div>ถ้าขึ้นหน้าจอสีฟ้า <b>"Windows protected your PC"</b> ให้กด <b>More info</b> → <b>Run anyway</b></div></div>
+  <button class="btn primary close" id="dlclose">เข้าใจแล้ว</button>
+  <div class="again">ดาวน์โหลดไม่เริ่ม? <a id="dlagain" href="https://github.com/churiwantuk-hash/vexy-checkcmd/releases/latest/download/VEXY-CheckCMD-Setup.exe">กดตรงนี้อีกครั้ง</a></div>
+</div></div>
 <div class="toast" id="toast"></div>
 
 <script>
@@ -280,7 +306,12 @@ footer a{color:var(--muted)}
       var a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();document.execCommand('copy');a.remove();toast('คัดลอกคำสั่งแล้ว')})})});
   document.querySelectorAll('.tabs button').forEach(function(b){b.addEventListener('click',function(){
     document.querySelectorAll('.tabs button').forEach(function(x){x.classList.toggle('on',x===b)});document.getElementById('shotimg').src=b.getAttribute('data-img')})});
-  document.querySelectorAll('a.dl').forEach(function(a){a.addEventListener('click',function(){toast('กำลังดาวน์โหลด… ถ้าขึ้นหน้าจอสีฟ้า กด More info → Run anyway')})});
+  // the link itself downloads VEXY-CheckCMD-Setup.exe into Downloads; the window explains what to do next
+  var dlm=document.getElementById('dlm');
+  document.querySelectorAll('a.dl').forEach(function(a){a.addEventListener('click',function(){dlm.classList.add('show')})});
+  document.getElementById('dlclose').addEventListener('click',function(){dlm.classList.remove('show')});
+  dlm.addEventListener('click',function(e){if(e.target===dlm)dlm.classList.remove('show')});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')dlm.classList.remove('show')});
 
   // version, size, date and changelog straight from the GitHub releases
   fetch('https://api.github.com/repos/'+REPO+'/releases?per_page=4').then(function(r){return r.ok?r.json():Promise.reject()}).then(function(rels){
@@ -288,7 +319,7 @@ footer a{color:var(--muted)}
     var latest=rels[0],asset=(latest.assets||[]).filter(function(a){return /\.exe$/i.test(a.name)})[0];
     document.getElementById('ver').textContent=latest.tag_name;
     document.getElementById('date').textContent=thDate(latest.published_at);
-    if(asset)document.getElementById('size').textContent=(asset.size/1048576).toFixed(1)+' MB';
+    if(asset){document.getElementById('size').textContent=(asset.size/1048576).toFixed(1)+' MB';document.getElementById('dlsize').textContent=(asset.size/1048576).toFixed(1)+' MB · '+latest.tag_name}
     document.getElementById('log').innerHTML=rels.map(function(r,i){
       var lines=(r.body||'').split(/\r?\n/).filter(function(l){return /^\s*-\s+/.test(l)}).slice(0,6).map(function(l){return '<li>'+esc(l.replace(/^\s*-\s+/,''))+'</li>'}).join('');
       return '<div class="rel"><div class="t"><b>'+esc(r.name||r.tag_name)+'</b>'+(i===0?'<span class="new">ล่าสุด</span>':'')+'<span class="d">'+thDate(r.published_at)+'</span></div>'+(lines?'<ul>'+lines+'</ul>':'')+'</div>'}).join('');
